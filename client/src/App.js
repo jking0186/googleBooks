@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
 import Jumbotron from "./components/Jumbotron";
 import Nav from "./components/Nav";
 import Input from "./components/Input";
@@ -9,25 +10,26 @@ import { Container, Row, Col } from "./components/Grid";
 
 function App() {
 
-  const [recipes, setRecipes] = useState([]);
-  const [recipeSearch, setRecipeSearch] = useState("");
+  const [books, setBooks] = useState([]);
+  const [bookSearch, setBookSearch] = useState("");
 
   const handleInputChange = event => {
     // Destructure the name and value properties off of event.target
     // Update the appropriate state
     const { value } = event.target;
-    setRecipeSearch(value);
+    setBookSearch(value);
   };
 
   const handleFormSubmit = event => {
     // When the form is submitted, prevent its default behavior, get recipes update the recipes state
     event.preventDefault();
-    API.getRecipes(recipeSearch)
-      .then(res => setRecipes(res.data))
+    API.getRecipes(bookSearch)
+      .then(res => setBooks(res.data))
       .catch(err => console.log(err));
   };
 
   return (
+    <Router>
     <div>
       <Nav />
       <Jumbotron />
@@ -39,10 +41,10 @@ function App() {
                 <Row>
                   <Col size="xs-9 sm-10">
                     <Input
-                      name="RecipeSearch"
-                      value={recipeSearch}
+                      name="BookSearch"
+                      value={bookSearch}
                       onChange={handleInputChange}
-                      placeholder="Search For a Recipe"
+                      placeholder="e.g. The Lord of The Flies"
                     />
                   </Col>
                   <Col size="xs-3 sm-2">
@@ -61,18 +63,18 @@ function App() {
         </Row>
         <Row>
           <Col size="xs-12">
-            {!recipes.length ? (
+            {!books.length ? (
               <h1 className="text-center">No Recipes to Display</h1>
             ) : (
               <RecipeList>
-                {recipes.map(recipe => {
+                {books.map(books => {
                   return (
                     <RecipeListItem
-                      key={recipe.title}
-                      title={recipe.title}
-                      href={recipe.href}
-                      ingredients={recipe.ingredients}
-                      thumbnail={recipe.thumbnail}
+                      key={books.title}
+                      title={books.title}
+                      href={books.href}
+                      ingredients={books.ingredients}
+                      thumbnail={books.thumbnail}
                     />
                   );
                 })}
@@ -82,6 +84,7 @@ function App() {
         </Row>
       </Container>
     </div>
+    </Router>
   );
 }
 
