@@ -31,7 +31,7 @@ export function BookListItem({
             <h3>{title}</h3>
             <p>Author: {author}</p>
             <p>Synopsis: {synopsis}</p>
-            <a rel="noreferrer noopener" target="_blank" href={link}>
+            <a rel="noreferrer noopener" target="_blank">
               <button className="btn btn-info">View</button>
             </a>
               <button className="btn btn-info" onClick={() => saveBook()}>Save</button>

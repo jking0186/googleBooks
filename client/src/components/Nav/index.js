@@ -9,14 +9,16 @@ function Nav() {
         Google Books
         </a>
           <NavLink
-          to="/search"
-          className="nav-link">
+          to="/search">
+          <button className="btn">
             Search
+          </button>
           </NavLink>
           <NavLink
-          to="/saved"
-          className="nav-link">
+          to="/saved">
+          <button className="btn">
             Saved
+          </button>
           </NavLink>
     </nav>
   );
