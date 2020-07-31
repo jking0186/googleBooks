@@ -23,7 +23,7 @@ function App() {
   const handleFormSubmit = event => {
     // When the form is submitted, prevent its default behavior, get recipes update the recipes state
     event.preventDefault();
-    API.getRecipes(bookSearch)
+    API.getBook(bookSearch)
       .then(res => setBooks(res.data))
       .catch(err => console.log(err));
   };

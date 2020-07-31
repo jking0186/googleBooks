@@ -1,28 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import Typography from '@material-ui/core/Typography';
-import Container from '@material-ui/core/Container';
-import { makeStyles } from '@material-ui/core/styles';
-import GridList from '@material-ui/core/GridList';
 import API from '../utils/API';
 import MediaCard from '../components/MediaCard';
-
-const useStyles = makeStyles({
-    root: {
-        maxWidth: '100%',
-        justifyContent: 'center',
-        alignItems: 'center',
-        textAlign: 'center',
-        margin: '20px'
-    },
-    heading: {
-        margin: "25px"
-    },
-    gridList: {
-        width: '100%',
-        height: '100%',
-        justifyContent: 'center'
-    }
-});
 
 function Saved() {
     const classes = useStyles();
@@ -45,13 +23,11 @@ function Saved() {
     }
 
     return (
-        <Container border={1} borderColor="secondary" className={classes.root}>
-            <Typography color="secondary" variant="h3" component="h1" className={classes.heading}>
-                Saved Books
-            </Typography>
-            <GridList className={classes.gridList} cols={3}>
+        <div className="container">
+            <h1>Saved Books</h1>
+            <div className="col">
                 {books.map((book, i) => (
-                    <MediaCard
+                    <div className="card-box"
                         key={i}
                         id={book._id}
                         image={book.image}
@@ -65,8 +41,8 @@ function Saved() {
                         btnContent={'Delete Book'}
                     />
                 ))}
-            </GridList>
-        </Container>
+            </div>
+        </div>
     );
 }
 

@@ -1,28 +1,5 @@
 import React, { useState } from 'react';
-import Header from '../components/Header';
-import Textfield from '../components/Textfield';
 import API from '../utils/API';
-import { makeStyles } from '@material-ui/core/styles';
-import MediaCard from '../components/MediaCard';
-import GridList from '@material-ui/core/GridList';
-import Button from '@material-ui/core/Button';
-import Container from '@material-ui/core/Container';
-import Box from '@material-ui/core/Box';
-import Typography from '@material-ui/core/Typography';
-
-const useStyles = makeStyles(theme => ({
-    box: {
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        marginBottom: '20px'
-    },
-    gridList: {
-        width: '100%',
-        height: '100%',
-        justifyContent: 'center'
-    }
-}));
 
 function Search() {
     const classes = useStyles();
@@ -65,19 +42,17 @@ function Search() {
 
 
     return (
-        <Container>
-            <Header />
-            <Textfield handleInputChange={handleInputChange} name="title" searchTerm={searchTerm} />
-            <Box className={classes.box}>
-                <Button variant="contained" color="secondary" onClick={searchBooks}>
+        <div className="container">
+            <input handleInputChange={handleInputChange} name="title" searchTerm={searchTerm} />
+            <div>
+                <button className="btn btn-secondary" onClick={searchBooks}>
                     Search
-                </Button>
-            </Box>
-            {/* <GridList className={classes.gridList} cols={3}> */}
+                </button>
+            </div>
             {books.length ? (
-                <GridList className={classes.gridList} cols={3}>
+                <div className="col-4">
                     {books.map((book, i) => (
-                        <MediaCard
+                        <div className="card-box"
                             key={i}
                             image={
                                 book.volumeInfo.imageLinks
@@ -98,13 +73,13 @@ function Search() {
                             btnContent={'Save Book'}
                         />
                     ))}
-                </GridList>
+                </div>
             ) : (
-                <Typography color="primary" variant="h3" className={classes.box}>
+                <input className="input">
                     {message}
-                </Typography>
+                </input>
             )}
-        </Container>
+        </div>
     );
 }
 
