@@ -12,11 +12,10 @@ const bookSchema = new mongoose.Schema({
   },
   synopsis: String,
   image: String,
-  link: String,
-  date: {
-    type: Date,
-    default: Date.now 
-  }  
+  link: {
+    data: Buffer, 
+    type: String
+  },
 });
 
 const Book = mongoose.model("Book", bookSchema);

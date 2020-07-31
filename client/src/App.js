@@ -5,7 +5,7 @@ import Nav from "./components/Nav";
 import Input from "./components/Input";
 import Button from "./components/Button";
 import API from "./utils/API";
-import { RecipeList, RecipeListItem } from "./components/RecipeList";
+import { BookList, BookListItem } from "./components/BookList";
 import { Container, Row, Col } from "./components/Grid";
 
 function App() {
@@ -64,21 +64,21 @@ function App() {
         <Row>
           <Col size="xs-12">
             {!books.length ? (
-              <h1 className="text-center">No Recipes to Display</h1>
+              <h1 className="text-center">No Books to Display</h1>
             ) : (
-              <RecipeList>
+              <BookList>
                 {books.map(books => {
                   return (
-                    <RecipeListItem
+                    <BookListItem
                       key={books.title}
                       title={books.title}
-                      href={books.href}
-                      ingredients={books.ingredients}
-                      thumbnail={books.thumbnail}
+                      author={books.author}
+                      synopsis={books.synopsis}
+                      image={books.image}
                     />
                   );
                 })}
-              </RecipeList>
+              </BookList>
             )}
           </Col>
         </Row>
